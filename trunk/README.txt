@@ -27,7 +27,7 @@
 
 2) Installation
 
- - In order to build the project you need to have installated Ant in your system.
+ - In order to build the project you need to have installated Ant 1.6.5 and Java 1.5.0.
 	
  - Also, you have to implement the audio system that you want to use with the IAX2 protocol (see the draft for supported audio codecs) according to the interfaces in the iax.audio package.
 
