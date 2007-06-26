@@ -2,7 +2,7 @@
 
 = Introduction =
 
-Code samples and contributions.  Please feel free to add your own contributions here.
+Code samples and contributions.  Please feel free to add your own contributions here and help us improve the project documentation.
 
 = Documentation =
 
