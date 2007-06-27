@@ -24,6 +24,10 @@ public class ControlFrame extends FullFrame {
      * Control frame, subclass value PROCEEDING
      */
     public static final int PROCEEDING = 15;
+    /**
+     * Control frame, subclass value STOP SOUNDS
+     */
+    public static final int STOPSOUNDS = 127;
     
     
     // Data attached to the control frame.
@@ -71,7 +75,7 @@ public class ControlFrame extends FullFrame {
     
     /**
      * Gets the data attached to the control frame
-     * @return an array of bytes with the data
+     * @return
      */
     public byte[] getData() {
         return data;

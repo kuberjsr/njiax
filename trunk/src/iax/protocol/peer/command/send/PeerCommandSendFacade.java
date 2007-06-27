@@ -39,11 +39,11 @@ public class PeerCommandSendFacade{
     
     /**
      * Sends a pong delegating in the Pong command send 
-     * @param peer peer for sending the frame
-     * @param pokeFrame poke frame that needs a pong frame
+     * @param call call for sending the frame
+     * @param pingFrame ping frame that needs a pong frame
      */
-    public static void pong(Peer peer, ProtocolControlFrame pokeFrame) {
-        (new Pong(peer, pokeFrame)).execute();  
+    public static void pong(Peer peer, ProtocolControlFrame poke) {
+        (new Pong(peer, poke)).execute();  
     }
     
     /**

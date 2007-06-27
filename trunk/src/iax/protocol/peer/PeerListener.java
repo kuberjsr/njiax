@@ -30,4 +30,6 @@ public interface PeerListener {
     
     public void playWaitTones(String calledNumber);
     
+    public void stopWaitTones(String calledNumber);
+    
 }

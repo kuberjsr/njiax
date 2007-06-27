@@ -2,6 +2,7 @@ package iax.protocol.call.state;
 
 import iax.protocol.call.Call;
 import iax.protocol.call.command.recv.CallCommandRecvFacade;
+import iax.protocol.call.command.send.CallCommandSendFacade;
 import iax.protocol.frame.ControlFrame;
 import iax.protocol.frame.DTMFFrame;
 import iax.protocol.frame.Frame;
@@ -41,7 +42,13 @@ public class Up extends CallState {
                     // Handles a ringing frame received
                     CallCommandRecvFacade.ringing(call, controlFrame);
                     break;
+                case ControlFrame.STOPSOUNDS:
+                    // Handles a ringing frame received
+                    CallCommandRecvFacade.stopRinging(call, controlFrame);
+                    break;
                 default:
+                    //By default, sends an ack for the control frame received
+                    CallCommandSendFacade.ack(call, controlFrame);
                     break;
                 }
             } else if (frame.getType() == Frame.PROTOCOLCONTROLFRAME_T) {

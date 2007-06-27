@@ -65,8 +65,10 @@ public class Connection implements Runnable {
 				recv(packet);
 			} catch (IOException e) {
 				e.printStackTrace();
+				stop();
 			}
 		}
+        socket.close();
 	}
 
     /*

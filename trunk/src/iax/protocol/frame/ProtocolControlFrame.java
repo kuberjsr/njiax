@@ -234,7 +234,7 @@ public class ProtocolControlFrame extends FullFrame {
     
     /**
      * Sets the calling name.
-     * @param callingName The calling name in a String.
+     * @param callingNumber The calling name in a String.
      */
     public void setCallingName(String callingName) {
         infoElements.put(InfoElement.CALLING_NAME, callingName.getBytes());
