@@ -50,6 +50,10 @@ public class Linked extends CallState {
                     // Handles a ringing frame received
                     CallCommandRecvFacade.ringing(call, controlFrame);
                     break;
+                case ControlFrame.STOPSOUNDS:
+                    // Handles a stop ringing frame received
+                    CallCommandRecvFacade.stopRinging(call, controlFrame);
+                    break;
                 default:
                     // By default, sends an ack for the control frame received
                     CallCommandSendFacade.ack(call, controlFrame);

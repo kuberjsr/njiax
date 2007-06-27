@@ -131,7 +131,7 @@ public class CallCommandRecvFacade {
 	}
 
      /**
-     * Handling a ringing by sending an ack
+     * Handling a ringing
      * @param call the call from wich the ringing was received
      * @param ringingFrame the ringing frame
      */
@@ -139,6 +139,16 @@ public class CallCommandRecvFacade {
         call.ringingCall();
         CallCommandSendFacade.ack(call, ringingFrame);
 	}
+    
+    /**
+     * Handling a stop ringing (STOP SOUNDS DOESN'T EXIST IN THE DRAFT)
+     * @param call the call from wich the stop ringing was received
+     * @param stopRingingFrame the stop ringing frame
+     */
+    public static void stopRinging(Call call, ControlFrame stopRingingFrame) {
+        call.stopRingingCall();
+        CallCommandSendFacade.ack(call, stopRingingFrame);
+    }
     
     /**
      * Handling an unsupported frame

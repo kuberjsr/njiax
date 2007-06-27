@@ -77,7 +77,7 @@ public class FrameUtil {
      * Computes the md5 result
      * @param challenge challenge in bytes for the md5
      * @param password password in bytes for the md5
-     * @return an array of bytes with the md5 result
+     * @return
      */
     public static byte[] md5(byte[] challenge, byte[] password) {
         MD5Digest md = new MD5Digest();

@@ -35,11 +35,11 @@ public abstract class FullFrame extends Frame {
     /**
      * Mask of the bit 0 of a short, for getting the attribute C
      */
-    private final int C_BYTEMASK = 0x8000;
+    private final int C_BYTEMASK = 0x80;
     /**
      * Mask of the bits 1 to 7 of a short, for getting the attribute SubClass
      */
-    private final int SUBCLASS_BYTEMASK = 0x7fff;
+    private final int SUBCLASS_BYTEMASK = 0x7f;
   
     private int retryCount;
     
@@ -96,6 +96,7 @@ public abstract class FullFrame extends Frame {
      * @param frameType frame type attribute
      * @param subclassPowerFormat flag for the attribute C that says if the subclass attribute is a power of 2 or not
      * @param subclass subclass
+     * @param data data attached to the frame.
      */
     protected FullFrame (int type, int srcCallNo, boolean retry, int destCallNo, long timeStamp, int oSeqno, 
             int iSeqno, int frameType, boolean subclassPowerFormat, int subclass) {
@@ -133,10 +134,12 @@ public abstract class FullFrame extends Frame {
             frameType = byteBuffer.get8bits();
             aux8bits = byteBuffer.get8bits();
             subclassPowerFormat = (((aux8bits & C_BYTEMASK)==0)?false:true);
-            if (subclassPowerFormat)
+            subclass = (aux8bits & SUBCLASS_BYTEMASK);
+            /* DESACTIVATED Power Format */
+            /*if (subclassPowerFormat)
                 //The value of the subclass attribute is a power of 2
                 subclass = 1 << (aux8bits & SUBCLASS_BYTEMASK); 
-            else subclass = (aux8bits & SUBCLASS_BYTEMASK); 
+            else subclass = (aux8bits & SUBCLASS_BYTEMASK); */
             retryCount = 0;
         } catch (Exception e) {
             throw new FrameException(e);

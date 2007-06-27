@@ -71,7 +71,7 @@ public class Call implements AudioListener{
     // Called number (number or extension's indentifier)
     private String calledNumber;
     // Flag to known if the firstVoiceFrame was sent or not
-    private boolean firstVoiceFrameSended;
+    private boolean firstVoiceFrameSent;
     // Peer that handles this call
     private Peer peer;
     // Ping timer task to send ping frames 
@@ -193,15 +193,15 @@ public class Call implements AudioListener{
      * Gets if the first voice frame was sent or not 
      * @return true if the first voice frame was sent, or false if not
      */
-    public boolean isFirstVoiceFrameSended() {
-        return firstVoiceFrameSended;
+    public boolean isFirstVoiceFrameSent() {
+        return firstVoiceFrameSent;
     }
 
     /**
      * Sets that the first voice frame was sent 
      */
-    public void firstVoiceFrameWasSended() {
-        this.firstVoiceFrameSended = false;
+    public void firstVoiceFrameSent() {
+        this.firstVoiceFrameSent = false;
     }
 
     /**
@@ -230,7 +230,7 @@ public class Call implements AudioListener{
         this.iseqno = 0;
         this.oseqno = 0;
         this.destCallNo = 0;
-        this.firstVoiceFrameSended = true;
+        this.firstVoiceFrameSent = true;
         this.framesWaitingAck.clear();
         this.calledNumber = calledNumber;
         this.state = Initial.getInstance();
@@ -267,6 +267,14 @@ public class Call implements AudioListener{
      */
     public void ringingCall() {
         peer.ringingCall(this);
+    }
+    
+    /**
+     * Notifies a received stop ringing for stopping wait tones
+     * (STOP SOUNDS DOESN'T EXIST IN THE DRAFT)
+     */
+    public void stopRingingCall() {
+        peer.stopRingingCall(this);
     }
     
     /**
@@ -425,7 +433,7 @@ public class Call implements AudioListener{
 
     /**
      * Sends a frame without wait reply or ack. For that delegates in the iax peer.
-     * @param frame the mini frame to send
+     * @param miniFrame the mini frame to send
      */
     public void sendFrameAndNoWait(Frame frame) {
         peer.sendFrame(frame);

@@ -30,9 +30,9 @@ public class SendVoice implements CallCommandSend {
     }
 
     public void run() {
-        // If is the firs voice frame, set that the first voice frame was sended through and send a full frame
-        if (call.isFirstVoiceFrameSended()) {
-            call.firstVoiceFrameWasSended();
+        // If is the firs voice frame, set that the first voice frame was sent and send a full frame
+        if (call.isFirstVoiceFrameSent()) {
+            call.firstVoiceFrameSent();
             call.handleSendFrame(new VoiceFrame(call.getSrcCallNo(), false, call.getDestCallNo(), call.getTimestamp(), 
                     call.getOseqno(), call.getIseqno(), false, VoiceFrame.GSM_SC, audioBuffer));
         } else {

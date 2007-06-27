@@ -17,6 +17,7 @@ public class RegRel implements PeerCommandSend {
     /**
      * Constructor
      * @param peer peer for sending the frame
+     * @param regauthFrame register auth frame that needs a register release frame or null if there isn«t this frame
      */
     public RegRel(Peer peer) {
         this.peer = peer;
@@ -26,7 +27,7 @@ public class RegRel implements PeerCommandSend {
     /**
      * Constructor
      * @param peer peer for sending the frame
-     * @param regauthFrame register auth frame that needs a register release frame
+     * @param regauthFrame register auth frame that needs a register release frame or null if there isn«t this frame
      */
     public RegRel(Peer peer, ProtocolControlFrame regauthFrame) {
         this.peer = peer;

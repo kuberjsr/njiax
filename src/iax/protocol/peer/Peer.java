@@ -219,7 +219,9 @@ public class Peer {
         try {
            Thread.sleep(2000);
         } catch (Exception e) {}
-        //Notifies the peer listener
+        //Notifies to the connection
+        connection.stop();
+        //Notifies to the peer listener
         peerListener.exited();
     }
 
@@ -355,6 +357,15 @@ public class Peer {
      */
     public void ringingCall(Call call) {
         peerListener.playWaitTones(call.getCalledNumber());
+    }
+    
+    /**
+     * Notifies to the peer listener for stopping wait tones
+     * (STOP SOUNDS DOESN'T EXIST IN THE DRAFT)
+     * @param call the call
+     */
+    public void stopRingingCall(Call call) {
+        peerListener.stopWaitTones(call.getCalledNumber());
     }
     
     
